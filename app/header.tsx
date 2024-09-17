@@ -33,14 +33,14 @@ function DropDownMenu() {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-                {isLoggedIn ? (
-                    <DropdownMenuItem onClick={() => signOut()}>
+                
+                    <DropdownMenuItem onClick={() => signOut({
+                        callbackUrl:"/"
+                    })}>
                         <LogOut className="mr-2"/> Sign out
                     </DropdownMenuItem>
-                ) : (<DropdownMenuItem onClick={() => signIn("google")}>
-                    <LogIn className="mr-2"/> Sign in
-                </DropdownMenuItem>)}
-                {/* <DropdownMenuSeparator /> */}
+                
+                
             </DropdownMenuContent>
         </DropdownMenu>
     )
@@ -56,7 +56,12 @@ export function Header() {
                     Logo
                 </div>
                 <div className="flex items-center gap-4">
-                    <DropDownMenu />
+                    {session.data && <DropDownMenu />}
+                    {!session.data && (
+                    <Button onClick={() => signIn("google")}>
+                        <LogIn className="mr-2"/> Sign in
+                    </Button>)
+                    }
                     <ModeToggle />
 
                 </div>

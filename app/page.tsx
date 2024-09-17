@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { db } from "@/db";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge"
+
 import {
   Card,
   CardContent,
@@ -12,6 +14,7 @@ import {
 import { Room } from "@/db/schema";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { getRooms } from "@/lib/rooms";
+import { splitTags, TagsList } from "@/components/ui/tags-list";
 
 
 function RoomCard({ room }: { room: Room }) {
@@ -21,19 +24,24 @@ function RoomCard({ room }: { room: Room }) {
         <CardTitle>{room.name}</CardTitle>
         <CardDescription>{room.description}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col gap-4">
+        <TagsList tags={splitTags(room.tags)}/>
+
         {room.gitHubRepo && 
-          <Link className= "flex items-center gap-2"
+          <Link className= "mb-2 flex items-center gap-2"
             href={room.gitHubRepo ?? ""}
             target="_blank"
             rel = "noopener noreferrer">
-            <GitHubLogoIcon/>
+            <GitHubLogoIcon className="h-5 w-5"/>
             Github Repo
           </Link>
         }
+        
+        
 
       </CardContent>
       <CardFooter>
+
         <Button asChild>
           <Link href={`/rooms/${room.id}`}>
             Join Room

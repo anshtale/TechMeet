@@ -116,7 +116,7 @@ export const testing = pgTable("testing", {
 
       name: text("name").notNull(),
       description: text("description"),
-      languages: text("language").notNull(),
+      tags: text("tags").notNull(),
       gitHubRepo : text("githubRepo"),
 
 
