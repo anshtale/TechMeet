@@ -4,6 +4,9 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { Header } from "./header";
 import NextTopLoader from "nextjs-toploader";
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
+import { cn } from "@/lib/utils";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(`${geistSans.variable} ${geistMono.variable} antialiased`,GeistMono.variable,GeistSans.variable)}
       >
         <NextTopLoader />
           <Providers>

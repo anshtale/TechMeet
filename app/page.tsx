@@ -23,18 +23,18 @@ function RoomCard({ room }: { room: Room }) {
   return (
     <Card className="flex flex-col justify-between overflow-hidden break-words">
       <CardHeader>
-        <CardTitle>{room.name}</CardTitle>
-        <CardDescription>{room.description}</CardDescription>
+        <CardTitle className="font-sans font-semibold tracking-tight">{room.name}</CardTitle>
+        <CardDescription className="text-sm text-muted-foreground font-sans">{room.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <TagsList tags={splitTags(room.tags)}/>
 
         {room.gitHubRepo && 
-          <Link className= "mb-2 flex items-center gap-2"
+          <Link className= "font-sans mb-2 flex items-center gap-2"
             href={room.gitHubRepo ?? ""}
             target="_blank"
             rel = "noopener noreferrer">
-            <GitHubLogoIcon className="h-5 w-5"/>
+            <GitHubLogoIcon className="text-xl text-muted-foreground h-5 w-5"/>
             Github Repo
           </Link>
         }
@@ -45,7 +45,7 @@ function RoomCard({ room }: { room: Room }) {
       <CardFooter>
 
         <Button asChild>
-          <Link href={`/rooms/${room.id}`}>
+          <Link className="font-bold font-sans "href={`/rooms/${room.id}`}>
             Join Room
           </Link>
         </Button>
@@ -64,18 +64,18 @@ export default async function Home({searchParams} : {
   return (
     <main className="min-h-screen p-16">
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl">
+        <h1 className="font-sans font-extrabold tracking-tight   text-4xl">
           Find Rooms
         </h1>
 
+
+        <Button asChild>
+          <Link className="font-sans" href='/create-room'>Create Room</Link>
+        </Button>
+      </div>
         <div className="mb-12">
           <SearchBar/>
         </div>
-
-        <Button asChild>
-          <Link href='/create-room'>Create Room</Link>
-        </Button>
-      </div>
 
       <div className="grid grid-cols-3 gap-5">
         {rooms.map((room) => {

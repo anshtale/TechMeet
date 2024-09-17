@@ -9,7 +9,7 @@ export function TagsList({tags} : {tags : string[]}){
             {tags.map((tag)=>{
                 return <Badge onClick={()=>{
                     router.push(`/?search=${tag}`)
-                }} className="rounded-full w-fit cursor-pointer"
+                }} className="font-sans rounded-full w-fit cursor-pointer"
 
                 key={tag}
                 tabIndex={0}

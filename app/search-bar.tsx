@@ -1,8 +1,8 @@
 "use client"
+
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-// import { Room } from "@/db/schema";
 
 import { Button } from "@/components/ui/button"
 import {
@@ -43,7 +43,7 @@ export function SearchBar(){
     async function onSubmit(values: z.infer<typeof formSchema>) {
         // await createRoomAction(values)
         if(values.search){
-            router.push(`/?seach=${values.search}`);
+            router.push(`/?search=${values.search}`);
         }else{
             router.push("/")
         }
@@ -51,16 +51,16 @@ export function SearchBar(){
 
     return (
         <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-2">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2">
                     <FormField
                         control={form.control}
                         name="search"
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input className="w-[440px]"{...field} placeholder="Filter Rooms by keywords, such as TypeScript, NextJs" />
+                                    <Input className=" font-sans w-[440px]"{...field} placeholder="Filter Rooms by keywords, such as TypeScript, NextJs" />
                                 </FormControl>
-                                <FormDescription>
+                                <FormDescription className="font-sans">
                                     This is your public room name.
                                 </FormDescription>
                                 <FormMessage />
@@ -68,10 +68,11 @@ export function SearchBar(){
                         )}
                     />
 
-                    <Button type="submit">
-                        <SearchIcon className="mr-2"/> Submit</Button>
+                    <Button className = "font-sans" type="submit">
+                        <SearchIcon className="mr-2"/> Submit
+                    </Button>
                     {query.get("search") && (
-                        <Button variant="link"
+                        <Button className = "font-sans" variant="link"
                         onClick={()=>{
                             form.setValue("search","");
                             router.push('/');
