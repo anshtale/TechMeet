@@ -11,6 +11,6 @@ export async function createRoomAction(roomData: Omit<Room, "id"|"userId">){
         throw new Error("you must be logged in to create this room");
     }
 
-    await db.insert(room).values({...roomData,userId:session.user.id});
+    await db.insert(room).values({...roomData,userId: session.user.id});
 
 }

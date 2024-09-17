@@ -105,7 +105,10 @@ export const testing = pgTable("testing", {
   export const room = pgTable(
     "room",
     {
-      id: uuid('id').default(sql`gen_random-uuid()`).notNull().primaryKey(),
+      id: uuid("id")
+      .default(sql`gen_random_uuid()`)
+      .notNull()
+      .primaryKey(),
 
       userId: text("userId").notNull()
       .references(()=>users.id,{onDelete: "cascade"}),

@@ -1,17 +1,54 @@
+import { Button } from "@/components/ui/button";
 import { db } from "@/db";
-import Image from "next/image";
+import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
-export default async function Home() {
-  const items = await db.query.testing.findMany();
+
+function RoomCard() {
   return (
-    <div>
-      {items.map((item)=>{
+    <Card>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+      <CardFooter>
+        <p>Card Footer</p>
+      </CardFooter>
+    </Card>
+
+  )
+}
+export default async function Home() {
+
+  const rooms = await db.query.room.findMany();
+  
+  return (
+    <main className="min-h-screen p-16">
+      <div className="flex justify-between items-center">
+        <h1 className="text-4xl">
+          Find Rooms
+        </h1>
+        <Button asChild>
+          <Link href='/create-room'>Create Room</Link>
+        </Button>
+      </div>
+
+      {/* {rooms.map((room)=>{
         return (
-          <div key={item.id}>
-            {item.name}
-          </div>
+          <RoomCard/>
         )
-      })}
-    </div>
+      })} */}
+
+    </main>
   );
 }
