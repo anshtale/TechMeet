@@ -15,6 +15,7 @@ import { Room } from "@/db/schema";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { getRooms } from "@/lib/rooms";
 import { splitTags, TagsList } from "@/components/ui/tags-list";
+import { SearchBar } from "@/app/search-bar";
 
 
 function RoomCard({ room }: { room: Room }) {
@@ -52,9 +53,12 @@ function RoomCard({ room }: { room: Room }) {
 
   )
 }
-export default async function Home() {
+export default async function Home({searchParams} : {
+  searchParams:{
+  search : string
+}}) {
 
-  const rooms = await getRooms();
+  const rooms = await getRooms(searchParams.search);
 
   return (
     <main className="min-h-screen p-16">
@@ -62,6 +66,11 @@ export default async function Home() {
         <h1 className="text-4xl">
           Find Rooms
         </h1>
+
+        <div className="mb-12">
+          <SearchBar/>
+        </div>
+
         <Button asChild>
           <Link href='/create-room'>Create Room</Link>
         </Button>
