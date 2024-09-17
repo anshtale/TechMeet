@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useRouter, useSearchParams } from "next/navigation"
 import { SearchIcon } from "lucide-react"
+import { useEffect } from "react"
 
 
 
@@ -34,6 +35,10 @@ export function SearchBar(){
             search: query.get("search") ?? ""
         }
     })
+
+    useEffect(()=>{
+        form.setValue("search",query.get("search") ?? "")
+    },[query.get("search"),form])
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         // await createRoomAction(values)

@@ -1,10 +1,11 @@
 import { Badge } from "@/components/ui/badge";
-import { splitTags, TagsList } from "@/components/ui/tags-list";
+import { TagsList } from "@/components/ui/tags-list";
 import { getRoom } from "@/lib/rooms";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 // import { Badge } from "lucide-react";
 import Link from "next/link";
 import { DevFinderVideo } from "./video-player";
+import { splitTags } from "@/lib/utils";
 
 export default async function RoomPage(props : {params : {roomId:string}}){
 

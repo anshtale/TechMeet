@@ -14,8 +14,9 @@ import {
 import { Room } from "@/db/schema";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { getRooms } from "@/lib/rooms";
-import { splitTags, TagsList } from "@/components/ui/tags-list";
+import { TagsList } from "@/components/ui/tags-list";
 import { SearchBar } from "@/app/search-bar";
+import { splitTags } from "@/lib/utils";
 
 
 function RoomCard({ room }: { room: Room }) {
