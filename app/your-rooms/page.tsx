@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-import { getRooms, getUserRooms } from "@/lib/rooms";
+import { getUserRooms } from "@/lib/rooms";
 import { UserRoomCard } from "./room-card";
 
 
