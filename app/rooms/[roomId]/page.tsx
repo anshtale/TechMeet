@@ -11,6 +11,7 @@ export default async function RoomPage(props : {params : {roomId:string}}){
 
     const roomId = props.params.roomId
     const room = await getRoom(roomId);
+    
     if(!room){
         return <div>No room with ID found!</div>
     }

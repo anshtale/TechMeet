@@ -11,7 +11,6 @@ import {
   import postgres from "postgres"
   import { drizzle } from "drizzle-orm/postgres-js"
   import type { AdapterAccount } from "next-auth/adapters"
-import { Languages } from "lucide-react"
 import { sql } from "drizzle-orm"
 
 export const testing = pgTable("testing", {

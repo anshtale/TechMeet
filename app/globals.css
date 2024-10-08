@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -15,9 +16,11 @@
 }
 
 body {
+  @apply overflow-y-hidden;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+
 }
 
 @layer utilities {
@@ -89,4 +92,6 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  
 }

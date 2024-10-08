@@ -13,13 +13,14 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { LogIn, LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import Link from "next/link";
+import Image from "next/image";
 
 
 
 
 function DropDownMenu() {
     const session = useSession();
-    const isLoggedIn = !!session.data;
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -47,14 +48,32 @@ function DropDownMenu() {
 }
 export function Header() {
     const session = useSession()
+    const isLoggedIn = !!session.data;
 
     return (
 
-        <header className="py-2 bg-gray-100 dark:bg-gray-900 mx-auto">
+        <header className="py-2 bg-gray-100 dark:bg-gray-900 mx-auto z-10 relative">
             <div className="flex justify-between items-center m-1">
-                <div>
-                    Logo
-                </div>
+                
+                <Image
+                    width="60"
+                    height="60"
+                    src={'/ic_launcher-web.png'} alt="logo"/>
+                <nav className="flex gap-4">
+                    { isLoggedIn &&<>
+                        <Link className="text-slate-600 dark:text-white hover:underline" href={"/"}>
+                            Browse
+                        </Link>
+
+                        <Link className="text-slate-600 dark:text-white hover:underline" href={"/your-rooms"}>
+                            Your Rooms
+                        </Link>
+                    
+                    
+                        </>
+                    }
+                    
+                </nav>
                 <div className="flex items-center gap-4">
                     {session.data && <DropDownMenu />}
                     {!session.data && (
