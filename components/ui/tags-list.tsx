@@ -8,7 +8,7 @@ export function TagsList({tags} : {tags : string[]}){
         <div className="flex gap-2 flex-wrap">
             {tags.map((tag)=>{
                 return <Badge onClick={()=>{
-                    router.push(`/?search=${tag}`)
+                    router.push(`/browse/?search=${tag}`)
                 }} className="font-sans rounded-full w-fit cursor-pointer"
 
                 key={tag}
