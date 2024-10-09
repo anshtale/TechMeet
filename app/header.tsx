@@ -58,7 +58,7 @@ export function Header() {
                     src={'/ic_launcher-web.png'} alt="logo"/>
                 <nav className="flex gap-4">
                     { isLoggedIn &&<>
-                        <Link className="text-slate-600 dark:text-white hover:underline" href={"/"}>
+                        <Link className="text-slate-600 dark:text-white hover:underline" href={"/browse"}>
                             Browse
                         </Link>
 
