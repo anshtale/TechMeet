@@ -32,11 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(`${geistSans.variable} ${geistMono.variable} antialiased`,GeistMono.variable,GeistSans.variable)}
+        className={cn(`${geistSans.variable} ${geistMono.variable} antialiased`,GeistMono.variable,GeistSans.variable,"overflow-y-auto")}
       >
         <NextTopLoader />
           <Providers>
             <Header/>
+      
             {children}
         </Providers>
       </body>
