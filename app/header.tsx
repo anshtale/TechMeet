@@ -65,8 +65,6 @@ export function Header() {
                         <Link className="text-slate-600 dark:text-white hover:underline" href={"/your-rooms"}>
                             Your Rooms
                         </Link>
-                    
-                    
                         </>
                     }
                     
